@@ -14,3 +14,10 @@ hs_err_pid*
 target
 .classpath
 .project
+
+# generated keys
+*.pem
+*.key
+
+# Intellij IDEA
+.idea

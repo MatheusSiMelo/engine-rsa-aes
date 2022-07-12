@@ -1,12 +1,22 @@
-#### Geração do par de chaves usando OPENSSL
-* **1ª Gera a chave PRIVADA** 
+# Gerar par de chaves usando OPENSSL
+> Utilize o GIT-BASH que já contém o OPENSSL configurado.
 
-    *openssl genrsa -out chave_rsa.pem 2048*
+----
+
+## 1. Gerar CHAVE PRIVADA RSA
+```shell
+openssl genrsa -out chave_privada_rsa.pem 2048
+```
+> xxxxxx
     
-* **2ª Gera a chave PÚBLICA a partir da privada**
-
-    openssl rsa -pubout -in chave_rsa.pem -out chave_publica.key
-    
-* **3ª Gerar chave BEGIN PRIVATE KEY para usar no projeto**
-
-    openssl pkcs8 -topk8 -inform PEM -in chave_rsa.pem -out chave_privada.pem -nocrypt
+## 2. Gera a CHAVE PÚBLICA RSA a partir da chave privada rsa gerada
+```shell
+openssl rsa -pubout -in chave_privada_rsa.pem -out chave_publica_rsa.key
+```
+> xxxxxxx
+  
+## 3. Gerar CHAVE BEGIN PRIVATE KEY
+```shell
+openssl pkcs8 -topk8 -inform PEM -in chave_privada_rsa.pem -out chave_begin_private_key.pem -nocrypt
+```
+> Atualizar a String PRIVATE_KEY_EMISSOR da classe Configuracoes.Java
